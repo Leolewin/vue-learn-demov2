@@ -66,7 +66,7 @@ export default {
     }
   },
   created () {
-    this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
+    this.debouncedGetAnswer = this.$_.debounce(this.getAnswer, 500)
   },
   methods: {
     handleInput(e) {
@@ -84,7 +84,7 @@ export default {
       var vm = this
       this.$axios.get('https://yesno.wtf/api')
         .then(function (response) {
-          vm.answer = _.capitalize(response.data.answer)
+          vm.answer = vm.$_.capitalize(response.data.answer)
         })
         .catch(function (error) {
           vm.answer = 'Error! Could not reach the API. ' + error
