@@ -8,10 +8,7 @@ export default {
   props: {
     placeholderName: String,
   },
-  emits: ['update:placeholderName'],
-  mounted() {
-    console.log(this.value);
-  }
+  emits: ['update:placeholderName']
 }
 </script>
 

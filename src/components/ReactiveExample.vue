@@ -3,20 +3,17 @@
     <h3>Reactive examples -- Computed</h3>
     <p>Original message: "{{ message }}"</p>
     <p>Computed reversed message: "{{ reversedMessage }}"</p>
-    <hr/>
     <label>Type to display: </label>
     <input
       :value="message"
       @input="handleInput"
     >
-    <hr/>
+    <br>
     <label>Type to change the reversed message to this value: </label>
     <input
       :value="reversedMessage"
       @input="handleInput2"
     >
-
-    <hr/>
     <hr/>
     <div id="watch-example">
       <h3>Reactive examples -- Watch</h3>
@@ -83,7 +80,7 @@ export default {
         return
       }
       this.answer = 'Thinking...'
-      var vm = this
+      let vm = this
       this.$axios.get('https://yesno.wtf/api')
         .then(function (response) {
           vm.answer = vm.$_.capitalize(response.data.answer)

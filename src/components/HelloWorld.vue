@@ -3,24 +3,33 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <hr/>
+    <BaseExample />
     <ReactiveExample />
     <hr/>
-    <h2>render list with v-for directive</h2>
-    <ul>
-      <li v-for=" (item, idx) in list" :key="idx">
-        <a :href="item.url" target="_blank" rel="noopener">{{item.text}}</a>
-      </li>
-    </ul>
-    <input @change="changeInput" /> 
-
-    <hr/>
-    <DIrectives/>
+    <DIrectives :list="list"/>
     <hr/>
     <h3>V-model example</h3>
     <label>value bind to v-model: {{ modelName }}</label>
     <VModelExample
       v-model="modelName"
     ></VModelExample>
+    <MixinExample/>
+    <SlotExample1>this is the slot demo 1</SlotExample1>
+    <SlotExample2></SlotExample2>
+    <SlotExample2>this is the slot demo 2</SlotExample2>
+    <SlotExample2>
+      <template slot="header">
+        this is the <em><b>header outer</b></em> slot content of slot demo 2
+      </template>
+      <template #footer>
+        this is the <em><b>footer outer</b></em> slot content of slot demo 2
+      </template>
+    </SlotExample2>
+    <SlotExample2>
+      <template v-slot="slotProps" >
+        this is the <em><b>default outer</b></em> slot content of slot demo 2, author: <em><b>{{slotProps.user.firstName}}</b></em>
+      </template>
+    </SlotExample2>
   </div>
 </template>
 
@@ -28,6 +37,10 @@
 /* eslint-disable */
 import ReactiveExample from './ReactiveExample.vue';
 import DIrectives from './DIrectives.vue';
+import BaseExample from './BaseExample.vue';
+import MixinExample from './MixinExample.vue';
+import SlotExample1 from './SlotExample1.vue';
+import SlotExample2 from './SlotExample2.vue';
 import * as Vue from 'vue';
 import VModel from './VModel.vue';
 
@@ -36,15 +49,14 @@ export default {
   components: {
     ReactiveExample: ReactiveExample,
     VModelExample: VModel,
-    DIrectives
+    DIrectives,
+    BaseExample,
+    MixinExample,
+    SlotExample1,
+    SlotExample2
   },
   props: {
     msg: String
-  },
-  watch: {
-    // list: function (newVal, oldVal) {
-      
-    // }
   },
   data: () => {
     return {
@@ -66,18 +78,11 @@ export default {
       }],
       modelName: 'placeholder',
     }
-  },
-  methods: {
-    changeInput: function (e) {
-      Vue.set(this.list, 0, {...this.list[0], ...{text: e.target.value}});
-    }
-  },
-
+  }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style >
 h3 {
   margin: 40px 0 0;
 }
@@ -91,5 +96,10 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.hello{
+  text-align: left;
+  padding-left: 20px;
 }
 </style>
