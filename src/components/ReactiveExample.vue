@@ -1,5 +1,6 @@
 <template>
   <div id="example">
+    <h3>Reactive examples -- Computed</h3>
     <p>Original message: "{{ message }}"</p>
     <p>Computed reversed message: "{{ reversedMessage }}"</p>
     <hr/>
@@ -18,6 +19,7 @@
     <hr/>
     <hr/>
     <div id="watch-example">
+      <h3>Reactive examples -- Watch</h3>
       <p>
         Ask a yes/no question:
         <input v-model="question">

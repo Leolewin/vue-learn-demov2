@@ -2,17 +2,7 @@
   <!-- eslint-disable  -->
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-
-
     <hr/>
-    <h3>Reactive Data Example</h3>
     <ReactiveExample />
     <hr/>
     <h2>render list with v-for directive</h2>
@@ -24,7 +14,9 @@
     <input @change="changeInput" /> 
 
     <hr/>
-    <h2>V-model example</h2>
+    <DIrectives/>
+    <hr/>
+    <h3>V-model example</h3>
     <label>value bind to v-model: {{ modelName }}</label>
     <VModelExample
       v-model="modelName"
@@ -35,6 +27,7 @@
 <script>
 /* eslint-disable */
 import ReactiveExample from './ReactiveExample.vue';
+import DIrectives from './DIrectives.vue';
 import * as Vue from 'vue';
 import VModel from './VModel.vue';
 
@@ -42,7 +35,8 @@ export default {
   name: 'HelloWorld',
   components: {
     ReactiveExample: ReactiveExample,
-    VModelExample: VModel 
+    VModelExample: VModel,
+    DIrectives
   },
   props: {
     msg: String
@@ -70,7 +64,7 @@ export default {
         url: "https://news.vuejs.org",
         text: 'News'
       }],
-      modelName: 'v-model example',
+      modelName: 'placeholder',
     }
   },
   methods: {
